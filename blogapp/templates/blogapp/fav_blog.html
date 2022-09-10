@@ -1,0 +1,28 @@
+{% extends 'blogapp/structure.html' %}
+
+{% load static %}
+
+{% block header_title %}{{post.post_title}}-Tools{% endblock header_title %}
+
+
+{% block main_heading %}{{post.post_title}} 
+{% for post in posts %}
+    {% include 'blogapp/post_card.html' with post=post %}
+{% endfor %}
+{% endblock main_heading %}
+
+
+{% block description %}{{post.post_summary}}{% endblock description %}
+
+
+{% block main_image %}{{post.post_image.url}}{% endblock main_image %}
+
+
+{% block main_content %}
+{{post.post_body | safe}}
+{% for post in posts %}
+    {% include 'blogapp/post_card.html' with post=post %}
+    <hr class="my-4" />
+{% endfor %}
+
+{% endblock main_content %}

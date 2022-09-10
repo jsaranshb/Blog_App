@@ -1,0 +1,85 @@
+{% extends 'blogapp/structure.html' %}
+
+{% load static %}
+
+{% block header_title %}
+Full Stack Development
+{% endblock header_title %}
+
+
+{% block main_heading %}
+Software Development
+{% endblock main_heading %}
+
+
+{% block description %}
+By using IT tools
+{% endblock description %}
+
+
+{% block main_image %}{% static 'blogapp/images/wheat.jpg' %}{% endblock main_image %}
+
+
+{% block main_content %}
+<style>
+    .cont{
+        height:400px;
+        width:450px;
+        border: #2a2b38 solid 1px;
+        border-radius: 5px;
+        margin-left:100px;
+        margin-top:70px;
+        margin-bottom:40px;
+        box-shadow: #102770 10px 10px 15px;
+        background: darkgray;
+    }
+    .sub{
+        background: cadetblue;
+        margin-top:20px;
+        margin-bottom: 15px;
+        border-radius:5px;
+        margin-left:5px;
+    }
+    .box{
+        margin-top: 20px;
+        margin-left:5px;
+        border-radius:10px;
+        background-color: lightblue;
+    }
+    .message{
+        colour: red;
+    }
+    body{
+        background-color: lightblue;
+    }
+    @media  and (max width : 320px) {
+        .cont{
+            margin-left:10px;
+          
+        }
+      }
+</style>
+<div class="cont">
+    {% if msg %}
+    <p style="color:tomato;">{{msg}}</p>
+    {% endif %}
+    <form method="POST" action="{% url 'blogapp:contact' %}">
+        {% csrf_token %}
+        <div>
+            <input class="box" type="text" name="name" value="" size="41" maxlength="32" placeholder="Name" required="required" aria-required="true">
+        </div>
+        <div>
+            <input class="box" type="text" name="email" value="" size="41" maxlength="32" placeholder="Email" required="required" aria-required="true">
+        </div>
+        <div>
+            <input class="box" type="text" name="mobile" value="" size="41" maxlength="12" placeholder="Mobile Number" required="required" aria-required="true">
+        </div>
+        <div>
+            <input class="box" type="text" name="mssg" value="" size="41" maxlength="150" placeholder="Query..." required="required" aria-required="true">
+        </div>
+        <input class="sub" type="submit" value="Submit">
+        <input class="sub" type="reset" value="Reset">
+    </form>
+</div>
+
+{% endblock main_content %}

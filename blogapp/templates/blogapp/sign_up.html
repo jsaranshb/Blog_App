@@ -1,0 +1,47 @@
+{% load static %}
+<link href="{% static 'blogapp/style1.css' %}" rel="stylesheet" />
+<div class="section">
+    <div class="container">
+        <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                    <h6 class="mb-0 pb-3">
+                        <span><a href="{% url 'blogapp:homepage' %}">Home</a>  /  </span><span>Already Registered ...  </span><span><a href="{% url 'blogapp:login_user' %}">  Log In </a></span>
+                    </h6>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    {% if msg %}
+                                    <p class="message">{{msg}}</p>
+                                    {% endif %}
+                                    <form method="POST" action="" class="section text-center">
+                                        {% csrf_token %}
+                                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                                        <div class="form-group">
+                                            <input type="text" name="username" class="form-style" placeholder="Username" id="logname" autocomplete="off">
+                                            <i class="input-icon uil uil-user"></i>
+                                        </div>	
+                                        <div class="form-group mt-2">
+                                            <input type="email" name="email" class="form-style" placeholder="email" id="logmail" autocomplete="off">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>	
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="password" class="form-style" placeholder="password" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" name="confirm_password" class="form-style" placeholder="Confirm Password" id="logpass" autocomplete="off">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <button type="submit" href="{% url 'blogapp:sign_up' %}" class="btn mt-4">submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

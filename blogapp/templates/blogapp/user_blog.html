@@ -1,0 +1,76 @@
+{% extends 'blogapp/structure.html' %}
+
+{% load static %}
+
+{% block header_title %}
+Full Stack Development
+{% endblock header_title %}
+
+
+{% block main_heading %}
+Software Development
+{% endblock main_heading %}
+
+
+{% block description %}
+By using IT tools
+{% endblock description %}
+
+
+{% block main_image %}{% static 'blogapp/images/wheat.jpg' %}{% endblock main_image %}
+
+
+{% block main_content %}
+
+<style>
+    body{
+        background-color: cornflowerblue;
+        
+    }
+    .extra{
+        display: flex;
+    }
+    .extra1{
+        height: 400px:
+        width: 400px:
+        border: 4px solid red;
+        background-color: grey;
+        border-radius: 10px;
+        padding-left: 25px;
+    }
+    .btn{
+        border-radius: 45px;
+        background: aquamarine;
+        font-size: 17px;
+    }
+    input{
+        border-radius: 20px;
+        width: 100%;
+    }
+    p{
+        font-weight: bold;
+    }
+</style>
+
+<div class="extra">
+    <div class="extra1">
+        <p>Make your own blog ...</p>
+        {% if msg %}
+        <p class="message">{{msg}}</p>
+        {% endif %}
+        <form method="POST" action="{% url 'blogapp:user_blog' %}">
+            {% csrf_token %}
+            <label for="fname">Title :</label><br>
+            <input type="text" id="fname" name="title" placeholder="Enter blog title"><br>
+            <label for="lname">Summary :</label><br>
+            <input type="text" id="lname" name="summary" placeholder="Enter summary"><br>
+            <label for="lname">Main-Content :</label><br>
+            <input type="text" name="content" placeholder="Enter the main content" id="content"><br> 
+            <label for="image">Select a image to upload:</label>
+            <input type="file" name="image" id="image" multiple accept="image/gif, image/jpeg"><br>
+            <button type="submit" id="post" class="btn" href="{% url 'blogapp:homepage' %}">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock main_content %}

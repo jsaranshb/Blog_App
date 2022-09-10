@@ -1,0 +1,41 @@
+{% extends 'blogapp/structure.html' %}
+
+{% load static %}
+
+{% block header_title %}
+Full Stack Development
+{% endblock header_title %}
+
+
+{% block main_heading %}
+Software Development
+{% endblock main_heading %}
+
+
+{% block description %}
+By using IT tools
+{% endblock description %}
+
+
+{% block main_image %}{% static 'blogapp/images/wheat.jpg' %}{% endblock main_image %}
+
+
+{% block main_content %}
+
+<style>
+    .invention{
+        color:tomato;
+        font-weight: bold;
+    }
+</style>
+
+<div class="invention">
+    <span>Wanna make your own blog ?</span><span><a href="{% url 'blogapp:user_blog' %}">   Click Here</a></span>
+</div>
+
+{% for post in posts %}
+    {% include 'blogapp/post_card.html' with post=post %}
+    <hr class="my-4" />
+{% endfor %}
+
+{% endblock main_content %}
